@@ -12,7 +12,7 @@ if not webhook_url:
 # 다음 정각 예측
 now = datetime.utcnow() + timedelta(hours=9)  # 한국 시간 기준 (UTC+9)
 next_hour = (now.hour + 1) % 24
-message = f"⏰ 결계 3분 전입니다! 준비하세요."
+message = f"⏰ 결계 3분 전입니다! 준비하세요. @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
