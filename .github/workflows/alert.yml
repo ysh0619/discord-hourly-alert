@@ -3,7 +3,7 @@ name: Discord Hourly Alert
 on:
   schedule:
     # KST 기준 매시 55분 → UTC 기준 매시 55분
-    - cron: '55 * * * *'
+    - cron: '51 * * * *'
   workflow_dispatch: # 수동 실행도 가능
 
 jobs:
