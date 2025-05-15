@@ -7,24 +7,14 @@ webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
 if not webhook_url:
     raise ValueError("환경변수 DISCORD_WEBHOOK_URL이 설정되지 않았습니다.")
 
-# 현재 시간 (UTC+9 → 한국 시간)
+# 현재 시간 (KST 기준)
 now = datetime.utcnow() + timedelta(hours=9)
 hour = now.hour
 minute = now.minute
 
-# 알림 제한 시간: 00:00 ~ 07:59
-if 0 <= hour < 8:
-    print(f"⏰ 현재 시간 {hour:02}:{minute:02} - 알림 제한 시간입니다. 전송 생략.")
-    exit(0)
+print(f"⏰ 현재 시간 (KST): {hour:02}:{minute:02} - 메시지 전송 중...")
 
-# 알림 허용된 분인지 확인
-if minute not in [15, 20, 55]:
-    print(f"⏰ 현재 시간 {hour:02}:{minute:02} - 대상 분이 아니므로 전송 생략.")
-    exit(0)
-
-# 알림 메시지 전송
-next_hour = (hour + 1) % 24
-message = f"⏰ 결계 5분 전입니다! @everyone"
+message = f"🎯 현재 시간 {hour:02}:{minute:02}! 에픽다이스 열쇠를 획득해보세요! @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
