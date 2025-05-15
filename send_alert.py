@@ -19,7 +19,7 @@ if 0 <= hour < 8:
 
 # 알림 메시지 전송
 next_hour = (hour + 1) % 24
-message = f"⏰ {next_hour:02}시 결계 5분 전입니다! @everyone"
+message = f"⏰ 결계 5분 전입니다! @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
