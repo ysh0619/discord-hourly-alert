@@ -9,8 +9,16 @@ if not webhook_url:
 
 # 한국 시간 기준 (UTC+9)
 now = datetime.utcnow() + timedelta(hours=9)
-next_hour = (now.hour + 1) % 24
-message = f"⏰ {next_hour:02}시 정각 5분 전입니다! 준비하세요."
+minute = now.minute
+hour = now.hour
+
+if minute == 55:
+    target_hour = (hour + 1) % 24
+    message = f"⏰ {target_hour:02}시 정각 5분 전입니다! 준비하세요."
+elif minute == 0:
+    message = f"🕛 {hour:02}시가 되었습니다! 지금 시작하세요."
+else:
+    message = "✅ 예기치 않은 실행입니다. 확인 필요."
 
 response = requests.post(webhook_url, json={"content": message})
 
