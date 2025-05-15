@@ -19,7 +19,7 @@ if 0 <= hour < 8:
 
 # 메시지 구성 및 전송
 next_hour = (now.hour + 1) % 24
-message = f"⏰ {next_hour:02}시 결계 5분 전입니다! 에픽다이스 열쇠를 획득해보세요!"
+message = f"⏰ {next_hour:02}시 결계 5분 전입니다! 에픽다이스 열쇠를 획득해보세요! @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
