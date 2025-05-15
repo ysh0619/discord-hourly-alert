@@ -10,7 +10,7 @@ if not webhook_url:
 # 한국 시간 기준 (UTC+9)
 now = datetime.utcnow() + timedelta(hours=9)
 next_hour = (now.hour + 1) % 24
-message = f"⏰ {next_hour:02}시 정각 5분 전입니다! 준비하세요."
+message = f"⏰ {next_hour:02}시 정각 5분 전입니다! 준비하세요. @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
