@@ -1,9 +1,10 @@
-name: Discord 5-Minute-Alert
+name: Discord Hourly Alert
 
 on:
   schedule:
-    - cron: '55 * * * *'  # ⏰ 매 시 55분 (UTC 기준 → KST에서도 동일)
-  workflow_dispatch:       # 수동 실행 허용
+    # 매시 55분에 실행 (UTC 기준)
+    - cron: '55 * * * *'
+  workflow_dispatch: # 수동 실행도 가능
 
 jobs:
   send-discord-alert:
