@@ -2,7 +2,9 @@ name: Discord 5-Minute-Alert
 
 on:
   schedule:
-    - cron: '55 * * * *'  # 매시 55분 (UTC 기준)
+    - cron: '15 * * * *'  # 매시 15분
+    - cron: '20 * * * *'  # 매시 20분
+    - cron: '55 * * * *'  # 매시 55분
   workflow_dispatch:        # 수동 실행 허용
 
 jobs:
