@@ -7,7 +7,7 @@ webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
 if not webhook_url:
     raise ValueError("환경변수 DISCORD_WEBHOOK_URL이 설정되지 않았습니다.")
 
-# 현재 시간 (UTC → 한국 시간)
+# 현재 시간 (UTC → KST)
 now = datetime.utcnow() + timedelta(hours=9)
 hour = now.hour
 minute = now.minute
@@ -15,6 +15,11 @@ minute = now.minute
 # 00시 ~ 07시 제외
 if hour < 8:
     print(f"⏰ {hour:02}:{minute:02} - 알림 제한 시간입니다. 전송 생략.")
+    exit(0)
+
+# 허용된 시간 범위 내에서만 실행 (예: 55~57분)
+if not (55 <= minute <= 59):
+    print(f"❌ {hour:02}:{minute:02} - 정해진 시간이 아닙니다. 전송 생략.")
     exit(0)
 
 # 메시지 전송
