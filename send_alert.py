@@ -24,7 +24,7 @@ if not (55 <= minute <= 59):
 
 # 메시지 전송
 next_hour = (hour + 1) % 24
-message = f"⏰ {next_hour:02}시 결계 준비하세요!"
+message = f"⏰ {next_hour:02}시 결계 준비하세요! @everyone"
 
 response = requests.post(webhook_url, json={"content": message})
 
